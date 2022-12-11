@@ -33,7 +33,7 @@ def predict(model):
         .format(classNames[np.argmax(score)], 100 * np.max(score)))
 
 
-st.title("Who's Art Is This")
+st.title("Who's Painting Is This")
 
 mbekImage = st.text_input('Input Art Link', placeholder='Give Me Art')
 
@@ -49,11 +49,15 @@ with col1:
     st.write(' ')
 
 with col2:
-    st.image(mbekImage, width=300)
+    if mbekImage:
+        st.image(mbekImage, width=300)
     processBtn = st.button("Process")
 
 with col3:
     st.write(' ')
 
 if processBtn:
-    predict(loadModel())
+    try:
+        predict(loadModel())
+    except:
+        print("error")
