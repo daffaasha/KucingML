@@ -20,12 +20,12 @@ def convertImage(mbek_url):
     return img_array
 
 def loadModel():
-    return load_model('model/mbekclassifier.h5')
+    return load_model('model/artmodel.h5')
 
 def predict(model):
     predictions = model.predict(processedImg)
     score = tf.nn.softmax(predictions[0])
-    classNames = model.outputs[0].class_names
+    classNames = ['Albrecht Dürer', 'Alfred Sisley', 'Francisco Goya', 'Pablo Picasso']
     print(classNames)
 
     st.subheader(
